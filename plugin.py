@@ -72,14 +72,14 @@ class RokuPlugin:
     def onStop(self):
         Domoticz.Log("onStop called")
 
-    def onConnect(self, Status, Description):
+    def onConnect(self, Connection, Status, Description):
         Domoticz.Log("onConnect called")
         if (Status == 0):
             self.r = roku.Roku(self.config['host'])
             self.isConnected = True
             Domoticz.Log("Connected successfully")
 
-    def onMessage(self, Data, Status, Extra):
+    def onMessage(self, Connection, Data, Status, Extra):
         Domoticz.Log("onMessage called")
 
     def onCommand(self, Unit, Command, Level, Hue):
@@ -98,7 +98,7 @@ class RokuPlugin:
     def onNotification(self, Name, Subject, Text, Status, Priority, Sound, ImageFile):
         Domoticz.Log("Notification: " + Name + "," + Subject + "," + Text + "," + Status + "," + str(Priority) + "," + Sound + "," + ImageFile)
 
-    def onDisconnect(self):
+    def onDisconnect(self, Connection):
         Domoticz.Log("onDisconnect called")
         self.isConnected = False
 
