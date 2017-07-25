@@ -135,13 +135,13 @@ def onStop():
     global _plugin
     _plugin.onStop()
 
-def onConnect(Status, Description):
+def onConnect(Connection, Status, Description):
     global _plugin
-    _plugin.onConnect(Status, Description)
+    _plugin.onConnect(Connection, Status, Description)
 
-def onMessage(Data, Status, Extra):
+def onMessage(Connection, Data, Status, Extra):
     global _plugin
-    _plugin.onMessage(Data, Status, Extra)
+    _plugin.onMessage(Connection, Data, Status, Extra)
 
 def onCommand(Unit, Command, Level, Hue):
     global _plugin
@@ -155,9 +155,9 @@ def onDisconnect():
     global _plugin
     _plugin.onDisconnect()
 
-def onHeartbeat():
+def onHeartbeat(Connection):
     global _plugin
-    _plugin.onHeartbeat()
+    _plugin.onHeartbeat(Connection)
 
     # Generic helper functions
 def DumpConfigToLog():
